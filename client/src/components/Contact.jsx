@@ -2,7 +2,7 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <div className=" ">
+    <div className="top-7">
      {/* top container with tagline and backgroundImage  */}
     <div className="relative">
       {/* image section  */}

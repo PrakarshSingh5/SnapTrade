@@ -8,6 +8,7 @@ import Login from '../pages/Login'
 import Contact from './Contact'
 import {Routes, Route, useLocation} from 'react-router-dom';
 import gsap from 'gsap';
+import {Toaster} from 'react-hot-toast'
 
 const GsapTransition = () => {
   const nodeRef=useRef(null);
@@ -22,9 +23,10 @@ const GsapTransition = () => {
   
   return (
     <div ref={nodeRef}>
+      <Toaster/>
       <Routes location={location}>
         <Route path='/' element={<Home/>} />
-        <Route paht='/about' element={<About/>} />
+        <Route path='/about' element={<About/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/signup' element={<Signup/>} />
         <Route path='/seller/profile' element={<Seller/>} />
