@@ -1,15 +1,23 @@
 import  React from 'react'
+import {BrowserRouter} from 'react-router-dom'
 
 import './App.css'
+
+import Navbar from './components/Navbar'
+
+import Footer from './components/Footer'
+import GsapTransition from './components/GsapTransition'
 
 function App() {
  
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+      <BrowserRouter>
+      <Navbar/>
+      <GsapTransition/>
+      <Footer/>
+      </BrowserRouter>
     </>
   )
 }
