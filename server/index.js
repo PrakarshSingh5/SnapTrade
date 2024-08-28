@@ -1,6 +1,6 @@
 const express=require("express")
 const dotenv=require("dotenv");
-
+const cors=require('cors');
 dotenv.config();
 const app=express();
 const {readdirSync}=require("fs");
@@ -8,6 +8,8 @@ const { connectDB } = require("./connection");
 //to read the folder struture
 const port=process.env.PORT || 5000;
 connectDB();
+app.use(cors());
+app.use(express.json());
 app.get("/", (req, res)=>{
         res.send(
             "<h1>Server is running</h1>"
