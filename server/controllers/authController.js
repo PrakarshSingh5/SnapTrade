@@ -2,38 +2,42 @@ const User= require("../models/User")
 const jwt=require("jsonwebtoken");
 const bcrypt=require("bcrypt");
 const { generateAccessToken } = require("../helpers/accessToken");
-const {generateRefreshToken} = require("./refreshToken");
+const { generateRefreshToken } = require("./refreshToken");
 
-const login= async(req, res)=>{
-    const {username,password}=req.body;
-    try{
-        let user=await User.findOne({username});
-        if(!user){
-            return res.status(400).json({success: false, message: "User cannot find"});
-        }
-        const comparedpass=await bcrypt.compare(password, user.password);
-        if(!comparedpass)return res.status(400).json({success:false, message: "Invalid Credential"});
-        const data={
-            id:user._id,
-            accountType:user.accountType,
-            author:user.username,
-        };
-        const accessToken=generateAccessToken(data);
-        const refreshToken=generateRefreshToken(data);
-       
-        return res.status(200).json({
+ const login = async (req, res) => {
+        const { username, password } = req.body;
+        try {
+          let user = await User.findOne({ username });
+          if (!user) {
+            return res.status(400).json({ success: false, message: "Please signup" });
+          }
+          const comparePassword = await bcrypt.compare(password, user.password);
+          if (!comparePassword)
+            return res
+              .status(400)
+              .json({ success: false, message: "Invalid credentails" });
+      
+          const data = {
+            id: user._id,
+            accountType: user.accountType,
+            author: user.username,
+          };
+      
+          const accessToken = generateAccessToken(data);
+          const refreshToken = generateRefreshToken(data);
+      
+          return res.status(200).json({
             success: true,
-            message:"Login Sccessfull",
+            message: "Login successful",
             accessToken,
             refreshToken,
             role: user.accountType,
             author: user.username,
-        })
-
-    } catch(error){
-        return res.status(500).json({success:false, message: error.message});
-    }
-}
+          });
+        } catch (error) {
+          return res.status(500).json({ success: false, message: error.message });
+        }
+};
 const signup=async(req, res)=>{
     const {username, email, password, accountType}=req.body;
     try{
