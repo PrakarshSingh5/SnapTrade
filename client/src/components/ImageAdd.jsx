@@ -32,15 +32,21 @@ const ImageAdd = () => {
                 const {public_id, secure_url}=await useUpload({image, onUploadProgress})
                 if(!public_id || !secure_url)return toast.error("Image Upload failed");
 
-                const res= await axios.post(import.meta.env.VITE_API_URL+"/post/create",{
-                    title, price, image: secure_url,
-                    public_id:public_id,
-                    author,
-                }, {
-                    headers:{
-                        "Authorization": "Bearer " + localStorage.getItem("accessToken"),
+                const res = await axios.post(
+                    import.meta.env.VITE_API_URL + "/post/create",
+                    {
+                      title,
+                      price,
+                      image: secure_url,
+                      publicId: public_id,
+                      author,
+                    },
+                    {
+                      headers: {
+                        Authorization: "Bearer " + localStorage.getItem("accessToken"),
+                      },
                     }
-                });
+                  );
                 const data=await res.data;
                 if(data.success == true){
                     toast.success(data.message);
