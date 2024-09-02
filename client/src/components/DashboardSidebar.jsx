@@ -8,9 +8,10 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { CiShoppingCart } from "react-icons/ci";
 import { setTab } from '../../store/slices/navSlice';
-import { logout } from '../../store/slices/authslice';
+import { logout,login } from '../../store/slices/authslice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import axios from 'axios'
 
 const DashboardSidebar = () => {
     const {pathname}=useLocation();
@@ -25,7 +26,17 @@ const DashboardSidebar = () => {
         toast.success("Logout Succesfull");
         navigate('/login');
     }
-
+    const switchProfile = async () => {
+      const res = await axios.get(import.meta.env.VITE_API_URL + "/switch", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
+      const data = await res.data;
+      toast.success(data.message);
+      dispatch(login(data));
+      navigate(`/${data.role}/profile`);
+    };
   return (
     <nav
     className={`fixed z-10 ${
@@ -93,6 +104,9 @@ const DashboardSidebar = () => {
         >
           <FaHome /> Home
         </Link>
+        <button  onClick={switchProfile} className='w-full px-2 hover:bg-blue-600 hover:text-white
+        cursor-pointer transition-all ease-linear duration-300 gap-2 border-b-2 border-black text-center uppercase text-sm py-2
+         '>Switch to {pathname == '/seller/profile'? "buyer" : "seller"}</button>
       </div>
     </div>
             {/* //logout button */}

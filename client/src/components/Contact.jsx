@@ -157,21 +157,21 @@ const Contact = () => {
               <path d="M16 22l5 -5" />
               <path d="M21 21.5v-4.5h-4.5" />
             </svg>
-            <span>yourmail@support.com</span>
+            <span>snaptrade@support.com</span>
           </div>
   
          
           <div className="flex justify-center md:justify-start items-center gap-4">
             <a title="youtube" href="#">
               <img className="h-8 w-8 invert" src="https://www.svgrepo.com/show/521936/youtube.svg" /></a>
-              <a title="linkedin" href="#">
+              <a title="linkedin" href="https://www.linkedin.com/in/prakarsh-singh-40a086228/">
                 <img className="h-12 w-12 invert" src="https://www.svgrepo.com/show/520815/linkedin.svg" /></a>
-                <a title="instagram" href="#">
+                <a title="instagram" href="https://www.instagram.com/_prakarsh._/?next=%2F&hl=en">
                   <img className="h-8 w-8 invert" src="https://www.svgrepo.com/show/521711/instagram.svg" /></a>
-                  <a title="github" href="#">
+                  <a title="github" href="https://github.com/PrakarshSingh5">
                     <img className="h-8 w-8 invert" src="https://www.svgrepo.com/show/512317/github-142.svg" /></a>
           </div>
-                  <h1 className="text-center"> Follow me on github <a href="https://github.com/Darkstar69" >Darkstar69</a> </h1>
+                 
         </div>
       </div>
           

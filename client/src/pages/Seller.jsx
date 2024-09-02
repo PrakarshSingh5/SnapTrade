@@ -1,6 +1,7 @@
 import React from 'react'
 import DashboardSidebar from '../components/DashboardSidebar'
 import PhotoManagement from '../components/seller/PhotoManagement'
+import Analytics from '../components/Analytics'
 
 const Seller = () => {
   return (
@@ -9,6 +10,7 @@ const Seller = () => {
         <div>
 
         </div>
+        {/* <Analytics/> */}
         <PhotoManagement/>
     </div>
   )
