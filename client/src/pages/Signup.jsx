@@ -7,7 +7,7 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [accountType, setAccountType] = useState("");
+  const [accountType, setAccountType] = useState("buyer");
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -16,6 +16,7 @@ const Signup = () => {
       const res = await axios.post(import.meta.env.VITE_API_URL + "/signup", {
         username, email, password, accountType
       });
+   
       const data = await res.data;
       if (data.success) {
         setUsername("");
@@ -52,8 +53,9 @@ const Signup = () => {
           <div>
             <label htmlFor='accountType' className='block text-sm font-medium text-gray-700 mb-2'>Select Your Account Type</label>
             <select name='accountType' id='accountType' onChange={(e) => setAccountType(e.target.value)} className='shadow-md rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-black focus:border-black mb-4'>
-              <option value="buyer">Buyer</option>
+            <option value="buyer">Buyer</option>
               <option value="seller">Seller</option>
+         
             </select>
           </div>
           <div className='flex items-center justify-end mb-4'>

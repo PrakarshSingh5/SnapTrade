@@ -16,7 +16,7 @@ const HeroSection = () => {
   }
   return (
     <div className="relative sm:w-full h-[60vh] overflow-clip  mx-auto flex justify-center items-center " >
-      <img src="https://images.pexels.com/photos/28003891/pexels-photo-28003891.jpeg?auto=compress&cs=tinysrgb&fit=crop&fp-y=0.6&h=500&w=1000" alt="Background Image" className="absolute inset-0 w-full sm:w-full h-[60vh] object-fill filter " />
+      {/* <img src="https://images.pexels.com/photos/28003891/pexels-photo-28003891.jpeg?auto=compress&cs=tinysrgb&fit=crop&fp-y=0.6&h=500&w=1000" alt="Background Image" className="absolute inset-0 w-full sm:w-full h-[60vh] object-fill filter " /> */}
     <div className="relative w-full max-w-xl mx-auto bg-white rounded-full">
   <input placeholder="Search for all images on Snaptrade" className="rounded-full w-full h-16 bg-transparent py-2 pl-8 pr-32 outline-none border-2 border-gray-100 shadow-md hover:outline-none focus:ring-teal-200 focus:border-teal-200" type="search" name="search" id="search"
   onChange={handleOnSearch}/>
