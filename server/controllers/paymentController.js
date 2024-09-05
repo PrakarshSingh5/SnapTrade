@@ -11,7 +11,7 @@ const razorpayInstance= new Razorpay({
 
 const generateOrder= async(req, res)=> {
     const purchaserId= req.id;
-    const {price}= req.body;
+    const { price }= req.body;
 
     try{
     let user=await User.findById(purchaserId);
@@ -39,14 +39,14 @@ const generateOrder= async(req, res)=> {
 const verifyOrder= async(req, res)=> {
     const purchaserId= req.id;
     const {
-            razorpay_order_id,
-            razorpay_payment_id,
-            razrorpay_signature,
-            postUrl, 
-            author, 
-            title, 
-            price, 
-            postId,
+        razorpay_order_id,
+        razorpay_payment_id,
+        razorpay_signature,
+        postUrl,
+        author,
+        title,
+        price,
+        postId,
            } = req.body;
 
            try{
@@ -54,14 +54,14 @@ const verifyOrder= async(req, res)=> {
             const expectedSign= crypto.createHmac("sha256", 
                 process.env.RAZORPAY_SECRET
             ).update(sign.toString()).digest("hex");
-            const isAuthentic = expectedSign === razrorpay_signature
+            const isAuthentic = expectedSign === razorpay_signature
             if(isAuthentic){
                 const order= new Order({
                     purchaserId,
                     postUrl,
-                    razorpayOrderid : razorpay_order_id,
-                    razorpayPaymentId : razorpay_payment_id,
-                    razorpaySignature : razrorpay_signature,
+                    razorpayOrderId: razorpay_order_id,
+                    razorpayPaymentId: razorpay_payment_id,
+                    razorpaySignature: razorpay_signature,
                     author,
                     title,
                     price,

@@ -33,13 +33,13 @@ const PhotoGallery = () => {
         price
       }, {
         headers :{
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       }, withCredentials: true
       
     }
   );
   const {data}= await res.data;
-  handlePaymentVerify(data,id, postUrl,author, title, price );
+  await handlePaymentVerify(data,id, postUrl,author, title, price );
   
       
     } catch (error) {
@@ -62,10 +62,10 @@ const PhotoGallery = () => {
                const res=await axios.post(import.meta.env.VITE_API_URL+"/payment/verify", 
                 { razorpay_payment_id: response.razorpay_payment_id,
                   razorpay_order_id: response.razorpay_order_id,
-                  razor_signature: response.razorpay_signature,
-                  postId:id,
+                  razorpay_signature: response.razorpay_signature,
+                  postId: id,
                   postUrl,
-                  author, 
+                  author,
                   title,
                   price,
                 },
@@ -91,7 +91,7 @@ const PhotoGallery = () => {
 
       }
       const razorpayWindow = new window.Razorpay(options);
-      razorpayWindow.open();
+    razorpayWindow.open();
   }
 
 
