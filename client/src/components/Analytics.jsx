@@ -1,4 +1,5 @@
-import React from 'react'
+import React ,{useEffect, useState} from 'react'
+import axios from 'axios'
 import DashboardHeader from './DashboardHeader'
 import { useLocation } from 'react-router-dom'
 import {ResponsiveContainer ,Line,LineChart, XAxis, YAxis, Tooltip } from 'recharts'
@@ -50,7 +51,32 @@ const data = [
   ];
 
 const Analytics = () => {
+  const [tillNow, setTillNow]=useState([]);
+  const [thisYear, setThisYear]=useState([]);
+  const [thisMonth, setThisMonth]=useState([]);
+  const [thisWeek, setThisWeek]=useState([]);
+
     const {pathname}=useLocation();
+    const getPostByDateRange=async()=>{
+      const res=await axios.get(import.meta.env.VITE_API_URL + "/post/getPostsByDateRange", 
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("accessToken"),
+
+          },
+          withCredentials: true,
+        }
+      );
+      const {data}=await res.data;
+      setTillNow(data.tillNow);
+      setThisMonth(data.thisMonth);
+      setThisYear(data.thisYear);
+      setThisWeek(data.thisWeek);
+    }
+
+    useEffect(()=>{
+      getPostByDateRange();
+    })
     
   return (
     <div>

@@ -6,6 +6,6 @@ const router = express.Router();
 router.post("/login", login);
 router.post("/signup", signup);
 router.get("/refresh", refresh);
-router.get("/switch",verifyToken,switchProfile);
+router.get("/switch",verifyToken, switchProfile);
 
 module.exports = router;

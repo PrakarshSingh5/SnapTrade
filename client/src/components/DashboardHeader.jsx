@@ -11,9 +11,9 @@ const DashboardHeader = () => {
     const disptach=useDispatch();
   return <>
      <div className='my-5 mx-8'>
-            <h1 className='text-3xl font-bold'>
+            <h1 className='text-3xl font-bold text-white'>
                 Hello <span className='underline'>{author?.charAt(0).toUpperCase() + author?.slice(1)}</span> , </h1>
-                <p>Welcome to your <span className='text-blue-600 '>{role} </span>dashboard </p>
+                <p className='text-white'>Welcome to your <span className='text-blue-600 '>{role} </span>dashboard </p>
       </div>
       <RiMenu3Fill onClick={()=>disptach(toggleSidebar())} className={`${sidebar == true? "hidden" : "block sm:hidden"} text-3xl absolute top-5 right-5`}/>
       <IoClose onClick={()=>disptach(toggleSidebar())} className={`${sidebar == true? "block sm:hidden" : "hidden" } text-3xl absolute top-5 right-5`}/>

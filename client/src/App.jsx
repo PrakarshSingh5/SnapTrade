@@ -5,12 +5,16 @@ import './App.css'
 
 import Navbar from './components/Navbar'
 
-import Footer from './components/Footer'
+// import Footer from './components/Footer'
 import GsapTransition from './components/GsapTransition'
 import {Provider} from 'react-redux'
 import { store } from '../store/store'
+import MainContent from './pages/MainComp'
+
 function App() {
- 
+  
+
+
 
   return (
     <>
@@ -18,7 +22,8 @@ function App() {
       <BrowserRouter>
       <Navbar/>
       <GsapTransition/>
-      <Footer/>
+        <MainContent/>
+     
       </BrowserRouter>
       </Provider>
     </>

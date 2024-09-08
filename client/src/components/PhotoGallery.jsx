@@ -64,7 +64,7 @@ const PhotoGallery = () => {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
       amount: data.amount,
       currency: data.currency,
-      name: "Raj Padval",
+      name: "Prakarsh Singh",
       order_id: data.id,
       theme: {
         color: "#5f63b8",
