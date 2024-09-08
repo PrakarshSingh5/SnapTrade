@@ -81,8 +81,10 @@ const searchPosts= async(req, res)=> {
 }
 
 const addToFavourite= async(req, res)=> {
-    const { authorId }= req.id;
+    
+    const  authorId = req.id;
     const { postId }= req.params;
+ 
     try{
        const user=await User.findByIdAndUpdate(authorId, {
         $push : {favourites: postId},
@@ -96,8 +98,9 @@ const addToFavourite= async(req, res)=> {
 
 }
 
+
 const removeFromFavourite= async(req, res)=> {
-    const { authorId }= req.id;
+    const authorId = req.id;
     const { postId }= req.params;
     try{
        const user=await User.findByIdAndUpdate(authorId, {
@@ -114,7 +117,7 @@ const removeFromFavourite= async(req, res)=> {
 const getFavourites= async(req, res)=> {
     const authorId= req.id;
     try{
-        const { favourites }= await User.findById(authorId).populates(
+        const { favourites }= await User.findById(authorId).populate(
             "favourites"
         );
         if(!favourites)return res.status(404).json({success:false, message: "No Favourite added"});
@@ -144,8 +147,11 @@ const getPostsByDateRange= async(req, res)=>{
         }
         const now=new Date();
         const startOfYear= new Date(now.getFullYear(), 0, 1);
-        const startOfMonth= new Date(now.getFullYear(), now.getMonth, 1);
-        const startOfWeek= new Date(now.getDate(now.getDate()-now.getDay()));
+        const startOfMonth= new Date(now.getFullYear(), now.getMonth(), 1);
+        const startOfWeek = new Date(now);
+        startOfWeek.setDate(now.getDate() - now.getDay());
+
+       
         
         const postsThisYear= data.filter((post)=> new Date(post.createdAt) >= startOfYear);
         const postsThisMonth= data.filter((post)=> new Date(post.createdAt) >= startOfMonth);

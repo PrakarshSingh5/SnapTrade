@@ -104,6 +104,30 @@ const PhotoGallery = () => {
   useEffect(() => {
     getAllImages();
   }, []);
+ 
+  const addToFav=async(id, authorId)=>{
+    console.log("Prakarsh you clicked it")
+   try {
+     const res = await axios.put(import.meta.env.VITE_API_URL + `/post/addToFavourites/${id}`, 
+      {
+        authorId: authorId,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("accessToken"),
+        }
+      }
+    );
+    const data=res.data;
+    if(data.success)
+        toast.success(data.message);
+    
+   } catch (error) {
+      toast.error(error.message);
+   }
+
+
+  }
 
   return (
     <div className="my-20 bg-white flex flex-col justify-center items-center">
@@ -111,7 +135,8 @@ const PhotoGallery = () => {
 
       {/* All my phos will be listed inside this div */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 bg-20">
-        {posts?.map(({ _id, title, image, price, author }) => {
+        {posts?.map(({ _id, title, image, price, author, authorId }) => {
+          
           return (
             <ImageCard
               key={_id}
@@ -130,7 +155,7 @@ const PhotoGallery = () => {
                 />
               }
               icon2={
-                <IoIosHeart className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300" />
+                <IoIosHeart onClick={()=>addToFav( _id , authorId)} className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-all ease-linear duration-300" />
               }
             />
           );
