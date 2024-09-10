@@ -8,7 +8,7 @@
 //   return (
 //     <>
 //         <div classNameName='mb-5 cursor-pointer' onClick={()=>setIsOpen(true)}>
-//              <img src={img} alt={title} />
+//              <img src={img} alt={title} />c
 //              <button className='bg-white text-black w-max h-10'>Payment</button>
 //         </div>
 //     </>
