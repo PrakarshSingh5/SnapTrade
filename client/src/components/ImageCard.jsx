@@ -1,45 +1,37 @@
-// import React from 'react'
-// import { useState } from 'react';
 
 
-// const ImageCard = ({id, img, title, price, author, authorId, icon1, icon2, purchaseImage, downloadImage}) => {
-//   const [isOpen, setIsOpen]= useState(false);
-  
-//   return (
-//     <>
-//         <div classNameName='mb-5 cursor-pointer' onClick={()=>setIsOpen(true)}>
-//              <img src={img} alt={title} />c
-//              <button className='bg-white text-black w-max h-10'>Payment</button>
-//         </div>
-//     </>
-//   )
-// }
-const ImageCard = ({ id, img, title, price, author, icon1, icon2 }) => {
+
+const ImageCard = ({id, img, title, price,  icon1, icon2}) => {
+
   return (
-    <div className="rounded-lg bg-white shadow-lg p-2 h-fit mb-6">
-      <div className="w-[300px] h-[200px] overflow-hidden rounded-2xl">
-        <img
-          src={img}
-          alt={title}
-          className="w-full h-full hover:scale-105 transition-all ease-linear duration-300 transform cursor-pointer"
-        />
+    <>
+        <div className="relative mb-10 cursor-pointer group ">
+         <img  src={img}  alt={title}  className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-300 ease-in-out"/>
+
+  {/* <!-- Popup (Appears on hover) --> */}
+  <div  className="absolute bottom-0 left-0 right-0 bg-white/190 backdrop-blur-3xl p-2 rounded-lg opacity-0 group-hover:opacity-90 transform translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-in-out">
+    <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
+  
+    <div className="flex justify-between">
+      <div>
+          <span>{icon2}</span>
       </div>
-      <p className="font-semibold text-white bg-black w-fit px-5 py-1 rounded-full text-sm mt-3">
-        {"@" + author.charAt(0).toUpperCase() + author.slice(1)}
-      </p>
-      <div className="flex justify-between items-center mt-2">
-        <div>
-          <h3 className="text-lg font-semibold">{title}</h3>
-          <p className="text-gray-500">Price : ${price}</p>
+        <div className="flex  justify-center">
+          <div> <span  className="font-semibold text-2xl"> ${price} </span></div>
+          <div>{icon1}</div>
+        
+       
         </div>
-        <div className="flex gap-5 justify-center items-center">
-          {icon1}
-          {icon2}
-        </div>
-      </div>
+         
+      
     </div>
-  );
-};
+  </div>
+</div>
+
+        
+    </>
+  )
+}
 
 
 export default ImageCard

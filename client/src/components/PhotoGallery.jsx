@@ -129,13 +129,15 @@ const PhotoGallery = () => {
 
   }
 
+
   return (
     <div className="my-20 bg-white flex flex-col justify-center items-center">
       <h3 className="text-3xl font-semibold my-14">Photos</h3>
 
-      {/* All my phos will be listed inside this div */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 bg-20">
-        {posts?.map(({ _id, title, image, price, author, authorId }) => {
+      <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4">
+            <div className="columns-1 gap-5 sm:columns-2 sm:gap-8 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:mt-8">
+            {posts?.map(({ _id, title, image, price, author, authorId }) => {
           
           return (
             <ImageCard
@@ -160,6 +162,10 @@ const PhotoGallery = () => {
             />
           );
         })}
+            </div>
+
+        </div>
+
       </div>
     </div>
   );
