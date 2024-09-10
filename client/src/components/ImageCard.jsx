@@ -12,16 +12,14 @@ const ImageCard = ({id, img, title, price,  icon1, icon2}) => {
   <div  className="absolute bottom-0 left-0 right-0 bg-white/190 backdrop-blur-3xl p-2 rounded-lg opacity-0 group-hover:opacity-90 transform translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-in-out">
     <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
   
-    <div className="flex justify-between">
-      <div>
+    <div className="flex justify-between items-center">
+      
           <span>{icon2}</span>
-      </div>
-        <div className="flex  justify-center">
-          <div> <span  className="font-semibold text-2xl"> ${price} </span></div>
-          <div>{icon1}</div>
-        
-       
-        </div>
+    
+          <div class="flex items-center">
+                <span class="mr-2 font-semibold text-xl">${price}</span>
+                <span class="text-2xl">{icon1}</span>
+            </div>
          
       
     </div>

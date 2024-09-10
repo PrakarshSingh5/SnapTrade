@@ -7,7 +7,7 @@ function MainContent() {
 
   return (
     <>
-      {pathname === "/login" || "/signup" ? null : <Footer />}
+      {pathname === "/" || pathname == "/about"  || pathname =='/contact' ? <Footer /> : null }
     </>
   );
 }

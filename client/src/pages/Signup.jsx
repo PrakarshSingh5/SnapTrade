@@ -90,9 +90,7 @@ const Signup = () => {
                                     type='password' name='password' id='password' placeholder='***************' value={password} onChange={(e) => setPassword(e.target.value)}
                                 />
 							
-              {/* {
-                password === "" ? (<p className="text-xs italic text-red-500">Please choose a password.</p>):(null)
-              }	 */}
+          
 							</div>
 							<div className="md:ml-2">
 								<label className="block mb-2 text-sm font-bold text-gray-700 dark:text-white" >

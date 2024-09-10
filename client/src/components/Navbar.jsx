@@ -43,7 +43,6 @@ const Navbar = () => {
         {
           !isAuthenticated ? (<>
            <Link to='/login' className='hover:text-white cursor-pointer sm:p-2'>LogIn</Link>
-           <Link to='/signup' className='hover:text-white cursor-pointer sm:p-2'>SignUp</Link>
           </>
            ):(  <Link to={`/${role}/profile`} className='hover:text-white cursor-pointer sm:p-2'>Profile</Link>)
         }
